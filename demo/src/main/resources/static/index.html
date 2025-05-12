@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌟 RPG 遊戲前端</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #1e1e2f;
+      color: #f0f0f0;
+      padding: 2em;
+    }
+    input, button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+    }
+    input {
+      width: 60%;
+      margin-right: 0.5em;
+    }
+    #output {
+      white-space: pre-wrap;
+      background: #2d2d3c;
+      padding: 1em;
+      margin-top: 1em;
+      border-radius: 0.5em;
+    }
+    .header {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">🧙 RPG 遊戲操作介面</div>
+
+  <button onclick="startGame()">🎮 開始遊戲</button>
+  <button onclick="restartGame()">🔄 重啟遊戲</button>
+
+  <form onsubmit="sendCommand(); return false;">
+    <input id="cmd" placeholder="輸入指令（如 attack / look / move north）" required />
+    <button type="submit">送出</button>
+  </form>
+
+  <div id="output">⬇️ 遊戲回應將顯示在這裡</div>
+
+  <script>
+    const baseUrl = "https://test.wonderfulwave-7b9d74e2.japaneast.azurecontainerapps.io/game";
+
+    async function startGame() {
+      const res = await fetch(`${baseUrl}/start`, {
+        method: "POST",
+        credentials: 'include'
+      });
+      document.getElementById("output").textContent = await res.text();
+    }
+
+    async function restartGame() {
+      const res = await fetch(`${baseUrl}/restart`, {
+        method: "POST",
+        credentials: 'include'
+      });
+      document.getElementById("output").textContent = await res.text();
+    }
+
+    async function sendCommand() {
+      const input = document.getElementById("cmd").value;
+      const res = await fetch(`${baseUrl}/command`, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: input,
+        credentials: 'include'
+      });
+      document.getElementById("output").textContent = await res.text();
+    }
+  </script>
+</body>
+</html>

@@ -18,7 +18,7 @@ public class GameController {
     public String command(@RequestBody String input, HttpSession session) {
         GameEngine engine = (GameEngine) session.getAttribute("game");
         if (engine == null) {
-            return "\u26A0\uFE0F 尚未開始遊戲，請先呼叫 /game/start。\n";
+            return "\u26A0\uFE0F 尚未開始遊戲，請先按\"🎮 開始遊戲\"按鈕。\n";
         }
         return engine.processCommand(input.trim());
     }
@@ -26,6 +26,6 @@ public class GameController {
     @PostMapping("/restart")
     public String restart(HttpSession session) {
         session.removeAttribute("game");
-        return "\uD83D\uDD04 遊戲已重置，請重新 /game/start。\n";
+        return "\uD83D\uDD04 遊戲已重置，請重新按\"🎮 開始遊戲\"按鈕以開始遊戲。\n";
     }
 } 

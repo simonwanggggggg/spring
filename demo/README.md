@@ -32,7 +32,7 @@
 
 ### ✅ 完整功能測試（含移動與第二場怪物戰）
 ```bash
-bash rpg_test_full.sh
+bash rpg_test.sh
 ```
 
 > 執行前請確認 server 已啟動在 `http://localhost:8080`
@@ -46,7 +46,7 @@ bash rpg_test_full.sh
 - `Command.java`：指令介面，所有指令都實作它
 - `Player/Monster/Room/GameContext`：遊戲邏輯核心
 - `SkillCommand/AttackCommand/...`：各式指令實作
-- `rpg_test*.sh`：自動測試腳本（建議加入版本控制）
+- `rpg_test.sh`：自動測試腳本（建議加入版本控制）
 
 ---
 

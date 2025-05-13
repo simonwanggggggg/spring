@@ -11,6 +11,13 @@ public class Monster {
         this.attack = attack;
     }
 
+    // 複製建構子
+    public Monster(Monster other) {
+        this.name = other.name;
+        this.hp = other.hp;
+        this.attack = other.attack;
+    }
+
     public String getName() {
         return name;
     }

@@ -28,4 +28,22 @@ public class GameController {
         session.removeAttribute("game");
         return "\uD83D\uDD04 遊戲已重置，請重新按\"🎮 開始遊戲\"按鈕以開始遊戲。\n";
     }
+
+    @PostMapping("/save")
+    public String saveGame(HttpSession session) {
+        GameEngine engine = (GameEngine) session.getAttribute("game");
+        if (engine == null) return "⚠️ 尚未開始遊戲。";
+
+        session.setAttribute("savedGame", engine.cloneContext());
+        return "💾 遊戲已儲存！";
+    }
+
+    @PostMapping("/load")
+    public String loadGame(HttpSession session) {
+        GameContext saved = (GameContext) session.getAttribute("savedGame");
+        if (saved == null) return "⚠️ 尚未儲存任何遊戲。";
+
+        session.setAttribute("game", new GameEngine(saved));
+        return "📂 遊戲已載入成功！";
+    }
 } 

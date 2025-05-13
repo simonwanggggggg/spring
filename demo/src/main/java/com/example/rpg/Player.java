@@ -1,15 +1,16 @@
+// ✅ Player.java 補上複製建構子
 package com.example.rpg;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
-    private final String name;
+    private String name;
     private int hp;
-    private final int attack;
+    private int attack;
     private int killCount = 0;
     private int totalDamage = 0;
-    private final Map<String, Skill> skills = new HashMap<>();
+    private Map<String, Skill> skills = new HashMap<>();
 
     public Player(String name, int hp, int attack) {
         this.name = name;
@@ -17,54 +18,30 @@ public class Player {
         this.attack = attack;
     }
 
-    public boolean isAlive() {
-        return hp > 0;
+    // 複製建構子
+    public Player(Player other) {
+        this.name = other.name;
+        this.hp = other.hp;
+        this.attack = other.attack;
+        this.killCount = other.killCount;
+        this.totalDamage = other.totalDamage;
+        this.skills = new HashMap<>();
+        for (Map.Entry<String, Skill> entry : other.skills.entrySet()) {
+            this.skills.put(entry.getKey(), entry.getValue());
+        }
     }
 
-    public void takeDamage(int dmg) {
-        hp = Math.max(0, hp - dmg);
-    }
-
-    public void heal(int amount) {
-        hp += amount;
-    }
-
-    public void addKill() {
-        killCount++;
-    }
-
-    public void addDamage(int dmg) {
-        totalDamage += dmg;
-    }
-
-    public void addSkill(Skill skill) {
-        skills.put(skill.getName().toLowerCase(), skill);
-    }
-
-    public Skill getSkill(String name) {
-        return skills.get(name.toLowerCase());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public int getKillCount() {
-        return killCount;
-    }
-
-    public int getTotalDamage() {
-        return totalDamage;
-    }
-    public Map<String, Skill> getSkills() {
-        return skills;
-    }
+    public boolean isAlive() { return hp > 0; }
+    public void takeDamage(int dmg) { hp -= dmg; }
+    public int getHp() { return hp; }
+    public int getAttack() { return attack; }
+    public void addKill() { killCount++; }
+    public void addDamage(int dmg) { totalDamage += dmg; }
+    public String getName() { return name; }
+    public int getKillCount() { return killCount; }
+    public int getTotalDamage() { return totalDamage; }
+    public void addSkill(Skill skill) { skills.put(skill.getName().toLowerCase(), skill); }
+    public Skill getSkill(String name) { return skills.get(name.toLowerCase()); }
+    public void heal(int amount) { this.hp += amount; }
+    public Map<String, Skill> getSkills() { return skills; }
 }

@@ -1,7 +1,7 @@
 package com.example.rpg;
 
 public class GameContext {
-    private final Player player;
+    private Player player;
     private Room currentRoom;
 
     public GameContext(Player player, Room startRoom) {
@@ -19,5 +19,11 @@ public class GameContext {
 
     public void setCurrentRoom(Room room) {
         this.currentRoom = room;
+    }
+
+    public GameContext deepCopy() {
+        Player newPlayer = new Player(this.player);
+        Room newRoom = this.currentRoom.cloneDeep();
+        return new GameContext(newPlayer, newRoom);
     }
 }

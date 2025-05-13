@@ -38,4 +38,8 @@ public class GameEngine {
     public GameContext getContext() {
         return context;
     }
+
+    public GameContext cloneContext() {
+        return context.deepCopy();  // 請在 GameContext 加一個 deepCopy 方法
+    }
 }

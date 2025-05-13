@@ -36,6 +36,8 @@
 
   <button onclick="startGame()">🎮 開始遊戲</button>
   <button onclick="restartGame()">🔄 重啟遊戲</button>
+  <button onclick="saveGame()">💾 儲存遊戲</button>
+  <button onclick="loadGame()">📂 載入遊戲</button>
 
   <form onsubmit="sendCommand(); return false;">
     <input id="cmd" placeholder="輸入指令（如 attack / look / move north）" required />
@@ -45,7 +47,7 @@
   <div id="output">⬇️ 遊戲回應將顯示在這裡</div>
 
   <script>
-  const baseUrl = "https://test.wonderfulwave-7b9d74e2.japaneast.azurecontainerapps.io/game";
+    const baseUrl = "https://test.wonderfulwave-7b9d74e2.japaneast.azurecontainerapps.io/game";
 
     async function startGame() {
       const res = await fetch(`${baseUrl}/start`, {
@@ -69,6 +71,22 @@
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         body: input,
+        credentials: 'include'
+      });
+      document.getElementById("output").textContent = await res.text();
+    }
+
+    async function saveGame() {
+      const res = await fetch(`${baseUrl}/save`, {
+        method: "POST",
+        credentials: 'include'
+      });
+      document.getElementById("output").textContent = await res.text();
+    }
+
+    async function loadGame() {
+      const res = await fetch(`${baseUrl}/load`, {
+        method: "POST",
         credentials: 'include'
       });
       document.getElementById("output").textContent = await res.text();

@@ -1,0 +1,6 @@
+./mvnw clean package -DskipTests
+docker build -t my-spring-app .
+docker run -p 8080:8080 my-spring-app
+docker tag my-spring-app ghcr.io/simonwanggggggg/my-spring-app:latest
+echo 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 | docker login ghcr.io -u user --password-stdin
+docker push ghcr.io/simonwanggggggg/my-spring-app:latest

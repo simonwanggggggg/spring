@@ -33,6 +33,12 @@
 ### ✅ 完整功能測試（含移動與第二場怪物戰）
 ```bash
 bash rpg_test.sh
+./mvnw clean package -DskipTests
+docker build -t my-spring-app .
+docker run -p 8080:8080 my-spring-app
+docker tag my-spring-app ghcr.io/simonwanggggggg/my-spring-app:latest
+echo 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 | docker login ghcr.io -u user --password-stdin
+docker push ghcr.io/simonwanggggggg/my-spring-app:latest
 ```
 
 > 執行前請確認 server 已啟動在 `http://localhost:8080`

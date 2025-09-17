@@ -1,7 +1,7 @@
 # HW1 Answer
 
 ## 1. OS 跟 IDE
-- 作業系統：Windows 10  
+- OS：Windows 10  
 - IDE：Code::Blocks  
 
 ---

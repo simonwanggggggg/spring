@@ -52,7 +52,7 @@ gcc main.c sum.c -o main.exe
 
 - 執行程式：
 ```bash
-gcc main.exe
+main.exe
 ```
 
 - 輸出結果：

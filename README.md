@@ -17,7 +17,7 @@ gcc --version
 ## 3. Command Line 編譯與執行
 
 ### 程式碼
-**main.c & sum.c**
+**main.c**
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,7 +30,9 @@ int main(void){
     system("pause");
     return 1;
 }
-
+```
+**sum.c**
+```c
 int sum(int n){
     int s = 0;
     int i;

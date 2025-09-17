@@ -46,7 +46,7 @@ int sum(int n){
 ---
 - 編譯流程：
 ```bash
-cd C:\Users\User\Desktop\Simon\C_University\B_ForthGrade\A_SystemProgramming\HW1
+cd 路徑\HW1
 gcc main.c sum.c -o main.exe
 ```
 

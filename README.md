@@ -14,6 +14,7 @@
 
 開啟終端時提示符為：
 - User@LAPTOP-MED0PNDO MSYS ~
+
 代表目前使用的是 **MSYS2 的 MSYS shell**
 ---
 

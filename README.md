@@ -16,6 +16,7 @@
 - User@LAPTOP-MED0PNDO MSYS ~
 
 代表目前使用的是 **MSYS2 的 MSYS shell**
+
 ---
 
 ## 檢查gcc版本
@@ -56,4 +57,8 @@ Hello, World!
 
 ```
 ![程式編寫內容](hello.c_program.png)
+
+圖1. 程式編寫內容
 ![完整MSYS2畫面](example1.png)
+
+圖2. 完整MSYS2畫面
